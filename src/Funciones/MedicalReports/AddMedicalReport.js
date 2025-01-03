@@ -7,8 +7,8 @@ import Sidebar from "../../Sidebar.js";
 import { useWallet } from "../../WalletProvider.js";
 import { useNavigate } from "react-router-dom";
 
-const URI = 'http://localhost:8000/appointments/'
-const MEDICAL_REPORT_URI = "http://localhost:8000/medicalreports";
+const URI = 'https://backend-kpx0.onrender.com/appointments/'
+const MEDICAL_REPORT_URI = "https://backend-kpx0.onrender.com/medicalreports";
 
 const AddMedicalReport = () => {
 
@@ -94,7 +94,7 @@ const AddMedicalReport = () => {
             }
             const updatedAppointment = { ...appointmentData, Status: "Completed" };
             await axios.put(`${URI}${id}`, updatedAppointment);
-            const response = await axios.post("http://localhost:8000/medicalreports", medicalReportData);
+            const response = await axios.post("https://backend-kpx0.onrender.com/medicalreports", medicalReportData);
             if (response.status === 200) {
                 
                 setMedicalReportData({
