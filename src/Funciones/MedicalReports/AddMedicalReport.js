@@ -130,9 +130,10 @@ const AddMedicalReport = () => {
             
 
             const lastReportId = await getLastMedicalReportId();
-            if (lastReportId) {
+            if (lastReportId != null) {
+                const idToNavigate = lastReportId === 0 ? 1 : lastReportId;
                 alert("Medical report added successfully!");
-                navigate(`/addPrescription/${lastReportId}`);
+                navigate(`/addPrescription/${idToNavigate}`);
             } else {
                 alert("Error redirecting to prescription form.");
             }

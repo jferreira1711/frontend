@@ -3,15 +3,21 @@ import Sidebar from "../../Sidebar";
 import { useNavigate } from "react-router-dom";
 import { KeyRound } from 'lucide-react';
 import axios from 'axios'; // Importar Axios
+import { useWallet } from "../../WalletProvider.js";
 
 const IdDoctorMedicalReport = () => {
 
     const [idDoctor, setIdDoctor] = useState("");
     const navigate = useNavigate();
+    const { doctorStaffGroup} = useWallet();
     
     const handleSubmit = async () => {
         if (!idDoctor) {
-            alert("Por favor ingrese un ID de un doctor válido");
+            alert("Please enter a valid doctor ID");
+            return;
+        }
+        if (!doctorStaffGroup) {
+            alert("Only doctorstaff is allowed.");
             return;
         }
 
